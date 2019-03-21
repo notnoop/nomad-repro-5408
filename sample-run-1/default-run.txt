@@ -1,0 +1,74 @@
+=====> Start nomad
+start nomad with logs in /tmp/nomad-logs-1553117841
+waiting for nomad to be up: ....
+
+====> Run job
+
+==> Monitoring evaluation "ec7ed45f"
+    Evaluation triggered by job "hello"
+    Allocation "1b0ba82f" created: node "db921d4c", group "hello"
+    Evaluation status changed: "pending" -> "complete"
+==> Evaluation "ec7ed45f" finished with status "complete"
+wait for alloc to be running: ..
+
+====> Kill exec
+root      8548  8538  0 21:37 ?        00:00:00 /bin/hello-signals
+vagrant   8568  8457  0 21:37 ?        00:00:00 grep /bin/hello-signals
+
+====> Check status after Killed
+
+### JOB STATUS
+ID            = hello
+Name          = hello
+Submit Date   = 2019-03-20T21:37:24Z
+Type          = service
+Priority      = 50
+Datacenters   = dc1
+Status        = running
+Periodic      = false
+Parameterized = false
+
+Summary
+Task Group  Queued  Starting  Running  Failed  Complete  Lost
+hello       0       1         0        0       0         0
+
+Allocations
+ID        Node ID   Task Group  Version  Desired  Status   Created  Modified
+1b0ba82f  db921d4c  hello       0        run      pending  5s ago   3s ago
+
+### ALLOC STATUS
+ID                  = 1b0ba82f
+Eval ID             = ec7ed45f
+Name                = hello.hello[0]
+Node ID             = db921d4c
+Job ID              = hello
+Job Version         = 0
+Client Status       = pending
+Client Description  = <none>
+Desired Status      = run
+Desired Description = <none>
+Created             = 5s ago
+Modified            = 3s ago
+
+Task "hello" is "pending"
+Task Resources
+CPU      Memory   Disk     IOPS  Addresses
+100 MHz  300 MiB  300 MiB  0     
+
+Task Events:
+Started At     = 2019-03-20T21:37:24Z
+Finished At    = N/A
+Total Restarts = 1
+Last Restart   = 2019-03-20T21:37:26Z
+
+Recent Events:
+Time                  Type        Description
+2019-03-20T21:37:26Z  Restarting  Task restarting in 18.603882766s
+2019-03-20T21:37:26Z  Terminated  Exit Code: 137, Signal: 9
+2019-03-20T21:37:24Z  Started     Task started by client
+2019-03-20T21:37:24Z  Task Setup  Building Task Directory
+2019-03-20T21:37:24Z  Received    Task received by client
+
+### ALLOC LOGS
+Hello World!
+waiting for signal...

@@ -1,0 +1,79 @@
+=====> Start nomad
+start nomad with logs in /tmp/nomad-logs-1553117965
+waiting for nomad to be up: .....
+
+====> Run job
+
+==> Monitoring evaluation "f47fac0f"
+    Evaluation triggered by job "hello"
+    Allocation "232c7bec" created: node "407e1466", group "hello"
+    Evaluation status changed: "pending" -> "complete"
+==> Evaluation "f47fac0f" finished with status "complete"
+wait for alloc to be running: ..
+
+====> Kill exec
+root     19021 19012  0 21:39 ?        00:00:00 /bin/hello-signals
+vagrant  19041 18922  0 21:39 ?        00:00:00 grep /bin/hello-signals
+
+====> Check status after Killed
+
+### JOB STATUS
+ID            = hello
+Name          = hello
+Submit Date   = 2019-03-20T21:39:29Z
+Type          = service
+Priority      = 50
+Datacenters   = dc1
+Status        = pending
+Periodic      = false
+Parameterized = false
+
+Summary
+Task Group  Queued  Starting  Running  Failed  Complete  Lost
+hello       0       0         0        1       0         0
+
+Future Rescheduling Attempts
+Task Group  Eval ID   Eval Time
+hello       b77d6076  27s from now
+
+Allocations
+ID        Node ID   Task Group  Version  Desired  Status  Created  Modified
+232c7bec  407e1466  hello       0        run      failed  5s ago   2s ago
+
+### ALLOC STATUS
+ID                     = 232c7bec
+Eval ID                = f47fac0f
+Name                   = hello.hello[0]
+Node ID                = 407e1466
+Job ID                 = hello
+Job Version            = 0
+Client Status          = failed
+Client Description     = <none>
+Desired Status         = run
+Desired Description    = <none>
+Created                = 5s ago
+Modified               = 2s ago
+Reschedule Eligibility = 27s from now
+
+Task "hello" is "dead"
+Task Resources
+CPU      Memory   Disk     IOPS  Addresses
+100 MHz  300 MiB  300 MiB  0     
+
+Task Events:
+Started At     = 2019-03-20T21:39:29Z
+Finished At    = 2019-03-20T21:39:31Z
+Total Restarts = 0
+Last Restart   = N/A
+
+Recent Events:
+Time                  Type            Description
+2019-03-20T21:39:31Z  Not Restarting  Policy allows no restarts
+2019-03-20T21:39:31Z  Terminated      Exit Code: 137, Signal: 9
+2019-03-20T21:39:29Z  Started         Task started by client
+2019-03-20T21:39:29Z  Task Setup      Building Task Directory
+2019-03-20T21:39:29Z  Received        Task received by client
+
+### ALLOC LOGS
+Hello World!
+waiting for signal...

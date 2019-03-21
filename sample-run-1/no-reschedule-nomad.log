@@ -1,0 +1,137 @@
+==> No configuration files loaded
+==> Starting Nomad agent...
+==> Nomad agent configuration:
+
+       Advertise Addrs: HTTP: 10.0.2.15:4646; RPC: 10.0.2.15:4647; Serf: 10.0.2.15:4648
+            Bind Addrs: HTTP: 0.0.0.0:4646; RPC: 0.0.0.0:4647; Serf: 0.0.0.0:4648
+                Client: true
+             Log Level: DEBUG
+                Region: global (DC: dc1)
+                Server: true
+               Version: 0.8.7
+
+==> Nomad agent started! Log data will stream in below:
+
+    2019/03/20 21:40:52 [INFO] raft: Initial configuration (index=1): [{Suffrage:Voter ID:10.0.2.15:4647 Address:10.0.2.15:4647}]
+    2019/03/20 21:40:52 [INFO] serf: EventMemberJoin: localhost.localdomain.global 10.0.2.15
+    2019/03/20 21:40:52.301386 [INFO] nomad: starting 1 scheduling worker(s) for [system service batch _core]
+    2019/03/20 21:40:52.301612 [INFO] client: using state directory /tmp/NomadClient801173939
+    2019/03/20 21:40:52 [INFO] raft: Node at 10.0.2.15:4647 [Follower] entering Follower state (Leader: "")
+    2019/03/20 21:40:52.303479 [INFO] nomad: adding server localhost.localdomain.global (Addr: 10.0.2.15:4647) (DC: dc1)
+    2019/03/20 21:40:52.303905 [DEBUG] server.nomad: lost contact with Nomad quorum, falling back to Consul for server list
+    2019/03/20 21:40:52.304480 [ERR] consul: error looking up Nomad servers: server.nomad: unable to query Consul datacenters: Get http://127.0.0.1:8500/v1/catalog/datacenters: dial tcp 127.0.0.1:8500: connect: connection refused
+    2019/03/20 21:40:52.304589 [INFO] client: using alloc directory /tmp/NomadClient812746614
+    2019/03/20 21:40:52.305945 [DEBUG] client.fingerprint_manager: built-in fingerprints: [arch cgroup consul cpu host memory network nomad signal storage vault env_aws env_gce]
+    2019/03/20 21:40:52.306055 [INFO] fingerprint.cgroups: cgroups are available
+    2019/03/20 21:40:52.306154 [DEBUG] client.fingerprint_manager: fingerprinting cgroup every 15s
+    2019/03/20 21:40:52.306265 [DEBUG] fingerprint.cpu: frequency: 2208 MHz
+    2019/03/20 21:40:52.306267 [DEBUG] fingerprint.cpu: core count: 1
+    2019/03/20 21:40:52.307390 [DEBUG] client.fingerprint_manager: fingerprinting consul every 15s
+    2019/03/20 21:40:52.307477 [WARN] fingerprint.network: Unable to parse Speed in output of '/sbin/ethtool lo'
+    2019/03/20 21:40:52.307518 [DEBUG] fingerprint.network: Unable to read link speed from /sys/class/net/lo/speed
+    2019/03/20 21:40:52.307521 [DEBUG] fingerprint.network: link speed could not be detected and no speed specified by user. Defaulting to 1000
+    2019/03/20 21:40:52.307579 [DEBUG] fingerprint.network: Detected interface lo with IP: 127.0.0.1
+    2019/03/20 21:40:52.307581 [DEBUG] fingerprint.network: Detected interface lo with IP: ::1
+    2019/03/20 21:40:52.308935 [DEBUG] client.fingerprint_manager: fingerprinting vault every 15s
+    2019/03/20 21:40:53 [WARN] raft: Heartbeat timeout from "" reached, starting election
+    2019/03/20 21:40:53 [INFO] raft: Node at 10.0.2.15:4647 [Candidate] entering Candidate state in term 2
+    2019/03/20 21:40:53 [DEBUG] raft: Votes needed: 1
+    2019/03/20 21:40:53 [DEBUG] raft: Vote granted from 10.0.2.15:4647 in term 2. Tally: 1
+    2019/03/20 21:40:53 [INFO] raft: Election won. Tally: 1
+    2019/03/20 21:40:53 [INFO] raft: Node at 10.0.2.15:4647 [Leader] entering Leader state
+    2019/03/20 21:40:53.667347 [INFO] nomad: cluster leadership acquired
+    2019/03/20 21:40:53.667909 [DEBUG] leader: reconciling job summaries at index: 0
+    2019/03/20 21:40:54.309428 [DEBUG] fingerprint.env_aws: Error querying AWS Metadata URL, skipping
+    2019/03/20 21:40:54.310034 [DEBUG] fingerprint.env_gce: Could not read value for attribute "machine-type"
+    2019/03/20 21:40:54.310037 [DEBUG] fingerprint.env_gce: Error querying GCE Metadata URL, skipping
+    2019/03/20 21:40:54.310045 [DEBUG] client.fingerprint_manager: detected fingerprints [arch cgroup cpu host network nomad signal storage]
+    2019/03/20 21:40:54.310062 [DEBUG] driver.exec: exec driver is enabled
+    2019/03/20 21:40:54.310085 [WARN] driver.raw_exec: raw exec is enabled. Only enable if needed
+    2019/03/20 21:40:54.310373 [DEBUG] driver.docker: using client connection initialized from environment
+    2019/03/20 21:40:54.310390 [DEBUG] driver.docker: using client connection initialized from environment
+    2019/03/20 21:40:54.310491 [DEBUG] driver.docker: could not connect to docker daemon at unix:///var/run/docker.sock: Get http://unix.sock/version: dial unix /var/run/docker.sock: connect: no such file or directory
+    2019/03/20 21:40:54.310504 [DEBUG] client.fingerprint_manager: detected drivers [exec raw_exec]
+    2019/03/20 21:40:54.310616 [DEBUG] client.fingerprint_manager: fingerprinting driver exec every 15s
+    2019/03/20 21:40:54.310634 [DEBUG] client.fingerprint_manager: fingerprinting driver rkt every 15s
+    2019/03/20 21:40:54.310641 [DEBUG] client.fingerprint_manager: fingerprinting driver docker every 15s
+    2019/03/20 21:40:54.310645 [DEBUG] client.fingerprint_manager: health checking driver docker every 1m0s
+    2019/03/20 21:40:54.311484 [INFO] client: Node ID "551b0168-2c90-b7c7-0bec-92afdc113d8e"
+    2019/03/20 21:40:54.315381 [INFO] client: node registration complete
+    2019/03/20 21:40:54.315571 [DEBUG] client: updated allocations at index 1 (total 0) (pulled 0) (filtered 0)
+    2019/03/20 21:40:54.316032 [DEBUG] client: allocs: (added 0) (removed 0) (updated 0) (ignore 0)
+    2019/03/20 21:40:54.316911 [DEBUG] client: state updated to ready
+    2019/03/20 21:40:55.302665 [DEBUG] http: Request GET /v1/agent/self (739.79µs)
+    2019/03/20 21:40:55.304077 [DEBUG] http: Request GET /v1/nodes?prefix=551b0168-2c90-b7c7-0bec-92afdc113d8e (205.639µs)
+    2019/03/20 21:40:55.304805 [DEBUG] http: Request GET /v1/node/551b0168-2c90-b7c7-0bec-92afdc113d8e (186.476µs)
+    2019/03/20 21:40:55.305584 [DEBUG] http: Request GET /v1/client/stats?node_id=551b0168-2c90-b7c7-0bec-92afdc113d8e (146.111µs)
+    2019/03/20 21:40:55.306088 [DEBUG] http: Request GET /v1/node/551b0168-2c90-b7c7-0bec-92afdc113d8e/allocations (89.97µs)
+    2019/03/20 21:40:55.306459 [DEBUG] http: Request GET /v1/node/551b0168-2c90-b7c7-0bec-92afdc113d8e/allocations (63.905µs)
+    2019/03/20 21:40:55.318649 [DEBUG] client: state changed, updating node and re-registering.
+    2019/03/20 21:40:55.319164 [INFO] client: node registration complete
+    2019/03/20 21:40:55.327668 [DEBUG] http: Request PUT /v1/jobs (923.967µs)
+    2019/03/20 21:40:55.327787 [DEBUG] worker: dequeued evaluation 5f1760a4-6d8c-ec90-4ce4-1194a61b891e
+    2019/03/20 21:40:55.327883 [DEBUG] sched: <Eval "5f1760a4-6d8c-ec90-4ce4-1194a61b891e" JobID: "hello" Namespace: "default">: Total changes: (place 1) (destructive 0) (inplace 0) (stop 0)
+Desired Changes for "hello": (place 1) (inplace 0) (destructive 0) (stop 0) (migrate 0) (ignore 0) (canary 0)
+    2019/03/20 21:40:55.329535 [DEBUG] worker: submitted plan at index 11 for evaluation 5f1760a4-6d8c-ec90-4ce4-1194a61b891e
+    2019/03/20 21:40:55.329641 [DEBUG] sched: <Eval "5f1760a4-6d8c-ec90-4ce4-1194a61b891e" JobID: "hello" Namespace: "default">: setting status to complete
+    2019/03/20 21:40:55.330087 [DEBUG] worker: updated evaluation <Eval "5f1760a4-6d8c-ec90-4ce4-1194a61b891e" JobID: "hello" Namespace: "default">
+    2019/03/20 21:40:55.330322 [DEBUG] worker: ack for evaluation 5f1760a4-6d8c-ec90-4ce4-1194a61b891e
+    2019/03/20 21:40:55.332150 [DEBUG] client: updated allocations at index 11 (total 1) (pulled 1) (filtered 0)
+    2019/03/20 21:40:55.332239 [DEBUG] client: allocs: (added 1) (removed 0) (updated 0) (ignore 0)
+    2019/03/20 21:40:55.334050 [DEBUG] http: Request GET /v1/evaluation/5f1760a4-6d8c-ec90-4ce4-1194a61b891e (386.372µs)
+    2019/03/20 21:40:55.335418 [DEBUG] http: Request GET /v1/evaluation/5f1760a4-6d8c-ec90-4ce4-1194a61b891e/allocations (286.789µs)
+    2019/03/20 21:40:55.351024 [DEBUG] client: starting task runners for alloc 'b8f37400-534c-0e3f-975e-438141c81399'
+    2019/03/20 21:40:55.351137 [DEBUG] client: starting task context for 'hello' (alloc 'b8f37400-534c-0e3f-975e-438141c81399')
+    2019/03/20 21:40:55.351298 [DEBUG] client.alloc_watcher: deadline for alloc "b8f37400-534c-0e3f-975e-438141c81399" is at 2019-03-20 21:45:55.351281456 +0000 UTC m=+303.137741932 (deploy=false checks=true)
+    2019/03/20 21:40:55.366345 [DEBUG] http: Request GET /v1/jobs?prefix=hello (352.737µs)
+    2019/03/20 21:40:55.368303 [DEBUG] http: Request GET /v1/job/hello (227.28µs)
+2019-03-20T21:40:55.370Z [DEBUG] plugin: starting plugin: path=/usr/bin/nomad args="[/usr/bin/nomad executor {"LogFile":"/tmp/NomadClient812746614/b8f37400-534c-0e3f-975e-438141c81399/hello/executor.out","LogLevel":"DEBUG"}]"
+2019-03-20T21:40:55.374Z [DEBUG] plugin: waiting for RPC address: path=/usr/bin/nomad
+    2019/03/20 21:40:55.377254 [DEBUG] http: Request GET /v1/job/hello/allocations?all=false (195.313µs)
+    2019/03/20 21:40:55.378093 [DEBUG] http: Request GET /v1/job/hello/evaluations (137.577µs)
+    2019/03/20 21:40:55.378684 [DEBUG] http: Request GET /v1/job/hello/deployment (105.045µs)
+    2019/03/20 21:40:55.379103 [DEBUG] http: Request GET /v1/job/hello/summary (111.162µs)
+2019-03-20T21:40:55.395Z [DEBUG] plugin.nomad: plugin address: timestamp=2019-03-20T21:40:55.395Z address=/tmp/plugin511905980 network=unix
+    2019/03/20 21:40:55.406815 [DEBUG] driver.raw_exec: started process with pid: 29639
+    2019/03/20 21:40:55.566660 [DEBUG] client: updated allocations at index 13 (total 1) (pulled 0) (filtered 1)
+    2019/03/20 21:40:55.566748 [DEBUG] client: allocs: (added 0) (removed 0) (updated 0) (ignore 1)
+    2019/03/20 21:40:56.410596 [DEBUG] http: Request GET /v1/jobs?prefix=hello (208.999µs)
+    2019/03/20 21:40:56.411874 [DEBUG] http: Request GET /v1/job/hello (234.85µs)
+    2019/03/20 21:40:56.413207 [DEBUG] http: Request GET /v1/job/hello/allocations?all=false (254.67µs)
+    2019/03/20 21:40:56.414213 [DEBUG] http: Request GET /v1/job/hello/evaluations (182.219µs)
+    2019/03/20 21:40:56.415017 [DEBUG] http: Request GET /v1/job/hello/deployment (112.394µs)
+    2019/03/20 21:40:56.415497 [DEBUG] http: Request GET /v1/job/hello/summary (97.083µs)
+2019-03-20T21:40:57.483Z [DEBUG] plugin.nomad: 2019/03/20 21:40:57 [ERR] plugin: plugin server: accept unix /tmp/plugin511905980: use of closed network connection
+2019-03-20T21:40:57.483Z [DEBUG] plugin: plugin process exited: path=/usr/bin/nomad
+    2019/03/20 21:40:57.485719 [INFO] client: task "hello" for alloc "b8f37400-534c-0e3f-975e-438141c81399" failed: Wait returned exit code 137, signal 9, and error <nil>
+    2019/03/20 21:40:57.485744 [INFO] client: Not restarting task: hello for alloc: b8f37400-534c-0e3f-975e-438141c81399 
+    2019/03/20 21:40:57.486069 [INFO] client.gc: marking allocation b8f37400-534c-0e3f-975e-438141c81399 for GC
+    2019/03/20 21:40:57.566642 [DEBUG] client: updated allocations at index 14 (total 1) (pulled 0) (filtered 1)
+    2019/03/20 21:40:57.566803 [DEBUG] client: allocs: (added 0) (removed 0) (updated 0) (ignore 1)
+    2019/03/20 21:41:00.510630 [DEBUG] http: Request GET /v1/jobs?prefix=hello (376.482µs)
+    2019/03/20 21:41:00.511594 [DEBUG] http: Request GET /v1/job/hello (201.039µs)
+    2019/03/20 21:41:00.513043 [DEBUG] http: Request GET /v1/job/hello/allocations?all=false (357.925µs)
+    2019/03/20 21:41:00.513969 [DEBUG] http: Request GET /v1/job/hello/evaluations (129.766µs)
+    2019/03/20 21:41:00.514527 [DEBUG] http: Request GET /v1/job/hello/deployment (98.899µs)
+    2019/03/20 21:41:00.514961 [DEBUG] http: Request GET /v1/job/hello/summary (109.77µs)
+    2019/03/20 21:41:00.539320 [DEBUG] http: Request GET /v1/allocations?prefix=b8f37400 (355.133µs)
+    2019/03/20 21:41:00.540783 [DEBUG] http: Request GET /v1/allocation/b8f37400-534c-0e3f-975e-438141c81399 (351.261µs)
+    2019/03/20 21:41:00.542576 [DEBUG] http: Request GET /v1/client/allocation/b8f37400-534c-0e3f-975e-438141c81399/stats (327.781µs)
+    2019/03/20 21:41:00.566057 [DEBUG] http: Request GET /v1/allocations?prefix=b8f37400 (374.424µs)
+    2019/03/20 21:41:00.567532 [DEBUG] http: Request GET /v1/allocation/b8f37400-534c-0e3f-975e-438141c81399 (245.225µs)
+    2019/03/20 21:41:00.569015 [DEBUG] http: Request GET /v1/node/551b0168-2c90-b7c7-0bec-92afdc113d8e (187.514µs)
+    2019/03/20 21:41:00.571124 [DEBUG] http: Request GET /v1/client/fs/logs/b8f37400-534c-0e3f-975e-438141c81399?follow=false&offset=0&origin=start&region=global&task=hello&type=stdout (1.020105ms)
+    2019/03/20 21:41:00.593527 [DEBUG] http: Request GET /v1/allocations?prefix=b8f37400 (201.372µs)
+    2019/03/20 21:41:00.594533 [DEBUG] http: Request GET /v1/allocation/b8f37400-534c-0e3f-975e-438141c81399 (193.896µs)
+    2019/03/20 21:41:00.595583 [DEBUG] http: Request GET /v1/node/551b0168-2c90-b7c7-0bec-92afdc113d8e (136.656µs)
+    2019/03/20 21:41:00.596649 [DEBUG] http: Request GET /v1/client/fs/logs/b8f37400-534c-0e3f-975e-438141c81399?follow=false&offset=0&origin=start&region=global&task=hello&type=stderr (339.6µs)
+==> Caught signal: terminated
+    2019/03/20 21:41:00.620966 [DEBUG] http: Shutting down http server
+    2019/03/20 21:41:00.621016 [INFO] agent: requesting shutdown
+    2019/03/20 21:41:00.621024 [INFO] client: shutting down
+    2019/03/20 21:41:02.130800 [WARN] client: failed to broadcast update to allocation "b8f37400-534c-0e3f-975e-438141c81399"
+    2019/03/20 21:41:02.133658 [DEBUG] client: terminating runner for alloc 'b8f37400-534c-0e3f-975e-438141c81399'
+    2019/03/20 21:41:02.133778 [INFO] nomad: shutting down server
+    2019/03/20 21:41:02 [WARN] serf: Shutdown without a Leave
+    2019/03/20 21:41:02.133862 [ERR] nomad: "Node.GetClientAllocs" RPC failed to server 10.0.2.15:4647: rpc error: EOF
+    2019/03/20 21:41:02.133934 [INFO] agent: shutdown complete
