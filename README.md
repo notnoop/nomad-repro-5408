@@ -8,12 +8,12 @@ This is a clean environment attempt to reproduce [nomad issue #5408](https://git
 # initial load
 vagrant up
 
-# to try with restart policy
+# default restart policy - verbatim from ticket
 vagrant ssh -- JOB_FILE=hello.nomad /tmp/vagrant/test.sh
-# to try service with no-restart policy
+# no-restart policy
 vagrant ssh -- JOB_FILE=hello-no-restart.nomad /tmp/vagrant/test.sh
-# to try batch with no-restart no-reschedule policy
-vagrant ssh -- JOB_FILE=hello-batch-no-restart.nomad /tmp/vagrant/test.sh
+# no-restart no-reschedule policy
+vagrant ssh -- JOB_FILE=hello-no-reschedule.nomad /tmp/vagrant/test.sh
 
 
 # upon modifications of files, always run `vagrant provision`, e.g.
@@ -45,3 +45,6 @@ mars-2:centos notnoop$ cat sample-run-1/*-run.txt | grep -B1 'Exit Code'
 | no-reschedule | dead       | failed              | `./sample-run-1/no-reschedule-run.txt` |
 
 3. With default restart policy, eventually the alloc would be restarted and both job and alloc status would have `running` status.
+
+4. Nomad recovers well by killing process when SIGTERM is sent to either `nomad executor` or `hello-signals`, or if `SIGKILL` is setn to `hello-signals` process.
+   * If `SIGKILL` is sent to `nomad executor` process, the `hello-signal` process is leaked and we plan to address this soon.
