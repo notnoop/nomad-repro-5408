@@ -25,15 +25,20 @@ vagrant provision; vagrant ssh -- JOB_FILE=hello.nomad /tmp/vagrant/test.sh
 1. In all cases, nomad detected that the process was killed, as evident by alloc task events.  Nomad emits a Terminated event when process is killed.
 
 ```
-mars-2:centos notnoop$ cat sample-run-1/*-run.txt | grep -B1 'Exit Code'
-2019-03-20T20:39:32Z  Not Restarting  Policy allows no restarts
-2019-03-20T20:39:32Z  Terminated      Exit Code: 137, Signal: 9
+$ grep -B1 'Exit Code' sample-run-1/*-run.txt
+sample-run-1/default-run.txt-2019-03-20T21:37:26Z  Restarting  Task restarting in 18.603882766s
+sample-run-1/default-run.txt:2019-03-20T21:37:26Z  Terminated  Exit Code: 137, Signal: 9
 --
-2019-03-20T20:35:41Z  Restarting  Task restarting in 16.769843104s
-2019-03-20T20:35:41Z  Terminated  Exit Code: 137, Signal: 9
+sample-run-1/no-reschedule-run.txt-2019-03-20T21:40:57Z  Not Restarting  Policy allows no restarts
+sample-run-1/no-reschedule-run.txt:2019-03-20T21:40:57Z  Terminated      Exit Code: 137, Signal: 9
 --
-2019-03-20T20:36:59Z  Not Restarting  Policy allows no restarts
-2019-03-20T20:36:59Z  Terminated      Exit Code: 137, Signal: 9
+sample-run-1/no-restart-run.txt-2019-03-20T21:39:31Z  Not Restarting  Policy allows no restarts
+sample-run-1/no-restart-run.txt:2019-03-20T21:39:31Z  Terminated      Exit Code: 137, Signal: 9
+
+$ grep 'failed: Wait' sample-run-1/*-nomad.log
+sample-run-1/default-nomad.log:    2019/03/20 21:37:26.947950 [INFO] client: task "hello" for alloc "1b0ba82f-6bc3-f056-043a-93c37b4432f5" failed: Wait returned exit code 137, signal 9, and error <nil>
+sample-run-1/no-reschedule-nomad.log:    2019/03/20 21:40:57.485719 [INFO] client: task "hello" for alloc "b8f37400-534c-0e3f-975e-438141c81399" failed: Wait returned exit code 137, signal 9, and error <nil>
+sample-run-1/no-restart-nomad.log:    2019/03/20 21:39:31.393566 [INFO] client: task "hello" for alloc "232c7bec-b906-4afc-d88e-10092b0ff0a0" failed: Wait returned exit code 137, signal 9, and error <nil>
 ```
 
 2. The job and alloc status after process is killed is dependent on the type job and restart/reschedule policy associated with it.  UI shows that status:
