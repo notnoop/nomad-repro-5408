@@ -38,12 +38,14 @@ echo
 
 echo
 echo "====> Kill exec"
-ps -ef |grep /bin/hello-signals
+ps -ef | grep /bin/hello-signals
 sudo pkill -9 hello-signals
 
 sleep 3
 echo
 echo "====> Check status after Killed"
+
+ps -ef |grep /bin/hello-signals || true
 
 echo
 echo '### JOB STATUS'
